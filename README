@@ -25,9 +25,12 @@ Installation:
 
 Usage:
 
-    sshpot [-h] [-p <port>]
-        -h  --help          Display this usage information.
-        -p  --port <port>   Port to listen on; defaults to 22.
+    sshpot [-h] [-p <port>] [-m <connections>]
+        -h  --help              Display this usage information.
+        -p  --port <port>       Port to listen on; defaults to 22.
+        -m  --max <connections> Limit the maximum number of connections
+                                (actually child processes); defaults
+                                to MAX_CONNECTIONS (10)
 
 
 Dependencies:

@@ -1,0 +1,14 @@
+[Unit]
+Description=SSH Honey pot
+DefaultDependencies=no
+After=network.target
+
+[Service]
+User=sshpot
+Type=simple
+KillMode=process
+Restart=on-failure
+ExecStart=/usr/sbin/sshpot -p 2222
+
+[Install]
+WantedBy=multi-user.target

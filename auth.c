@@ -46,16 +46,18 @@ static int log_attempt(struct connection *c) {
 
     if (get_utc(c) <= 0) {
         fprintf(stderr, "Error getting time\n");
+        fclose(f);
         return -1;
     }
 
     if (get_client_ip(c) < 0) {
         fprintf(stderr, "Error getting client ip\n");
+        fclose(f);
         return -1;
     }
 
-    c->user = ssh_message_auth_user(c->message);
-    c->pass = ssh_message_auth_password(c->message);
+    c->user = (char*) ssh_message_auth_user(c->message);
+    c->pass = (char*) ssh_message_auth_password(c->message);
 
     if (DEBUG) { printf("%s %s %s %s\n", c->con_time, c->client_ip, c->user, c->pass); }
     r = fprintf(f, "%s %s %s %s\n", c->con_time, c->client_ip, c->user, c->pass);

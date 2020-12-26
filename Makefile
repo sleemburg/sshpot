@@ -17,8 +17,9 @@ auth.o: auth.c auth.h config.h
 
 install:
 	@if [ $(USER) != "root" ]; then echo make install must be run as root.; false; fi
-	$(CHMOD) 755 sshpot
-	$(SETCAP) 'cap_net_bind_service=+ep' sshpot
+	cp sshpot /usr/sbin/sshpot
+	$(CHMOD) 755 /usr/sbin/sshpot
+	$(SETCAP) 'cap_net_bind_service=+ep' /usr/sbin/sshpot
 
 clean:
 	\/bin/rm -f *.o
