@@ -1,0 +1,8 @@
+[DEFAULT]
+
+ignoreip = 127.0.0.1/8 ::1 192.168.0.0/16
+
+[sshd]
+bantime = 24h
+mode=aggressive
+action = iptables-sshpot
